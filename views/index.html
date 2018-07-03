@@ -59,20 +59,9 @@
         <button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/client.js"></script>
     </script>
     <script>
-        const socket = io();
-
-        document.getElementById('form').addEventListener('submit', () => {
-            const message = document.getElementById('m');
-            socket.emit('chat message', message.value);
-            message.value = '';
-        });
-
-        socket.on('chat message', (msg) => {
-            const messages = document.getElementById('messages');
-            messages.appendChild(document.createElement('li')).innerText = msg;
-        });
     </script>
 
 </body>
