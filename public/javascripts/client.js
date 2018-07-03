@@ -36,10 +36,10 @@ socket.on('send_to_client', (receive_data) => {
             `;
 
     message.setAttribute('id', 'messageId' + data.id);
-    message.setAttribute('class', 'message');
+    message.classList.add('message');
 
     //既読処理
-    if (data.read === true) message.setAttribute('class', 'read');
+    if (data.read === true) message.classList.add('read');
 
     message.innerHTML = template;
 });
@@ -52,7 +52,7 @@ document.getElementById('btn_read').addEventListener('click', () => {
 socket.on('read_already', (receive_data) => {
     const data = JSON.parse(receive_data);
     //送られてきたデータに該当するメッセージに既読のクラスを追加する
-    document.getElementById('messageId' + data.id).setAttribute('class', 'read');
+    document.getElementById('messageId' + data.id).classList.add('read');
 
 });
 
