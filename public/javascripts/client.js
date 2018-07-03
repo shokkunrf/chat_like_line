@@ -30,12 +30,29 @@ socket.on('send_to_client', (receive_data) => {
         date = new Date(data.time);
     const message = document.getElementById('chat_messages').appendChild(document.createElement('li'));
     const template = `
-        <div>${data.usr}</div>
-        <div>${data.msg}</div>
-        <div>${date.getHours()}:${date.getMinutes()}</div>
-    `;
+                <div>${data.usr}</div>
+                <div>${data.msg}</div>
+                <div>${date.getHours()}:${date.getMinutes()}</div>
+            `;
 
+    message.setAttribute('id', 'messageId' + data.id);
     message.setAttribute('class', 'message');
+
+    //既読処理
+    if (data.read === true) message.setAttribute('class', 'read');
 
     message.innerHTML = template;
 });
+
+//既読送信
+document.getElementById('btn_read').addEventListener('click', () => {
+    socket.emit('read_already', login.usr, Date.now());
+});
+//既読受信
+socket.on('read_already', (receive_data) => {
+    const data = JSON.parse(receive_data);
+    //送られてきたデータに該当するメッセージに既読のクラスを追加する
+    document.getElementById('messageId' + data.id).setAttribute('class', 'read');
+
+});
+
