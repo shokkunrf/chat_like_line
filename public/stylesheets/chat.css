@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #bcf5ff;
+    font: 13px Helvetica, Arial;
+}
+
+form {
+    background: #000;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+form input {
+    border: 5px;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+}
+
+form button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+}
+
+
+.message {
+    list-style-type: none;
+    margin: 0.5rem;
+    padding: 0;
+    display: flex;
+}
+.message .message_comment{
+    font-size:2rem;    
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.message+.me{
+    text-align: right;
+    flex-direction: row-reverse;
+}
+.message+.you{
+    text-align: left;    
+}
+
+.message+.me>.message_comment{
+    background-color: #77ff89;
+}
+.message+.you>.message_comment{
+    background-color: #fff;
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
+
+.read::after {
+    content: '既読'
+}
