@@ -18,7 +18,7 @@ form {
 }
 
 form input {
-    border: 0;
+    border: 5px;
     padding: 10px;
     width: 90%;
     margin-right: .5%;
@@ -34,13 +34,14 @@ form button {
 
 .message {
     list-style-type: none;
-    margin: 0;
+    margin: 0.5rem;
     padding: 0;
     display: flex;
 }
 .message .message_comment{
     font-size:2rem;    
     border-radius: 1rem;
+    padding: 0.5rem;
 }
 
 .message+.me{
