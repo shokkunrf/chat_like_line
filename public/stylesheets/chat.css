@@ -5,6 +5,7 @@
 }
 
 body {
+    background-color: #bcf5ff;
     font: 13px Helvetica, Arial;
 }
 
@@ -30,10 +31,31 @@ form button {
     padding: 10px;
 }
 
-#messages {
+
+.message {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
+}
+.message .message_comment{
+    font-size:2rem;    
+    border-radius: 1rem;
+}
+
+.message+.me{
+    text-align: right;
+    flex-direction: row-reverse;
+}
+.message+.you{
+    text-align: left;    
+}
+
+.message+.me>.message_comment{
+    background-color: #77ff89;
+}
+.message+.you>.message_comment{
+    background-color: #fff;
 }
 
 #messages li {
@@ -44,7 +66,6 @@ form button {
     background: #eee;
 }
 
-.read {
-    background-color: #000;
-
+.read::after {
+    content: '既読'
 }

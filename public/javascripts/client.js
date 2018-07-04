@@ -30,13 +30,15 @@ socket.on('send_to_client', (receive_data) => {
         date = new Date(data.time);
     const message = document.getElementById('chat_messages').appendChild(document.createElement('li'));
     const template = `
-                <div>${data.usr}</div>
-                <div>${data.msg}</div>
-                <div>${date.getHours()}:${date.getMinutes()}</div>
+                <div class="message_user">${data.usr}</div>
+                <div class="message_comment">${data.msg}</div>
+                <div class="message_time">${date.getHours()}:${date.getMinutes()}</div>
             `;
 
     message.setAttribute('id', 'messageId' + data.id);
     message.classList.add('message');
+    //自分か相手のクラスを加える
+    message.classList.add(data.usr === login.usr ? 'me' : 'you');
 
     //既読処理
     if (data.read === true) message.classList.add('read');
