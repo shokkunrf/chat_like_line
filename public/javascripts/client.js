@@ -1,11 +1,12 @@
 const socket = io();
 
-const login = {
-    'usr': Math.random()
+let login = {
+    'usr': document.getElementById('user_name').value
 }
 
 //送信
 document.getElementById('send_form').addEventListener('submit', () => {
+    login.usr = document.getElementById('user_name').value;
     const send_user = login.usr,
         send_message = document.getElementById('send_message'),
         send_time = new Date();
