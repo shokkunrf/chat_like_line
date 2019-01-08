@@ -30,9 +30,10 @@ socket.on('send_to_client', (receive_data) => {
     const data = JSON.parse(receive_data),
         date = new Date(data.time);
     const message = document.getElementById('chat_messages').appendChild(document.createElement('li'));
+    const msg = stampConverter(data.msg);
     const template = `
                 <div class="message_user">${data.usr}</div>
-                <div class="message_comment">${data.msg}</div>
+                <div class="message_comment">${msg}</div>
                 <div class="message_time">${date.getHours()}:${date.getMinutes()}</div>
             `;
 
@@ -59,3 +60,21 @@ socket.on('read_already', (receive_data) => {
 
 });
 
+// stamp文字列入力
+document.getElementById('stamp0').addEventListener('click', () => {
+    const send_message = document.getElementById('send_message');
+    send_message.value += ':stamp0:';
+});
+// stamp受信時
+const stampConverter = (msg) => {
+    let result = msg;
+    const stampTemplate = `
+    <img src="asset/animalface_niwatori.png" alt="">
+    <audio src="asset/chicken-cry1.mp3" autoplay>
+    </audio> 
+    `;
+    if (/:*:/.test(msg)) {
+        result=msg.replace(/:stamp0:/g, stampTemplate);
+    }
+    return result
+};
