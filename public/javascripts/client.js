@@ -59,3 +59,8 @@ socket.on('read_already', (receive_data) => {
 
 });
 
+// stamp文字列入力
+document.getElementById('stamp0').addEventListener('click', () => {
+    const send_message = document.getElementById('send_message');
+    send_message.value += ':stamp0:';
+});
