@@ -70,6 +70,8 @@ const stampConverter = (msg) => {
     let result = msg;
     const stampTemplate = `
     <img src="asset/animalface_niwatori.png" alt="">
+    <audio src="asset/chicken-cry1.mp3" autoplay>
+    </audio> 
     `;
     if (/:*:/.test(msg)) {
         result=msg.replace(/:stamp0:/g, stampTemplate);
