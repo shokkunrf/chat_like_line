@@ -95,3 +95,7 @@ body {
     height: 2rem;
     width: auto;
 }
+.message_comment>img{
+    height: 10rem;
+    width: auto;
+}
