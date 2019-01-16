@@ -67,14 +67,23 @@ document.getElementById('stamp0').addEventListener('click', () => {
 });
 // stamp受信時
 const stampConverter = (msg) => {
+    const ARY = msg.match(/:stamp\d+:/g);
+    if (!ARY) { return msg; };
+
     let result = msg;
-    const stampTemplate = `
-    <img src="asset/animalface_niwatori.png" alt="">
-    <audio src="asset/chicken-cry1.mp3" autoplay>
-    </audio> 
-    `;
-    if (/:*:/.test(msg)) {
-        result=msg.replace(/:stamp0:/g, stampTemplate);
-    }
-    return result
+    const stampSet = [{
+        'name': 'stamp0',
+        'img': 'animalface_niwatori.png',
+        'sound':'chicken-cry1.mp3'
+    }];
+    
+    stampSet.forEach((element) => {
+        const stampTemplate = `
+            <img src="asset/${element.img}">
+            <audio src="asset/${element.sound}" autoplay></audio>
+        `;
+        const stampName = new RegExp(`:${element.name}:`,'g');
+        result = result.replace(stampName, stampTemplate);
+    });
+    return result;
 };
